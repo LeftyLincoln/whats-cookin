@@ -11,9 +11,9 @@ class Recipe {
   getIngredients(ingredientsData) {
     const ingredientsListIDs = this.ingredients.map((ingredient) => {
       return ingredient.id;
-    })
+    });
     const ingredientNames = ingredientsData.filter((ingredient) => {
-      return ingredientsListIDs.includes(ingredient.id)
+      return ingredientsListIDs.includes(ingredient.id);
     }).map((ingredient) => {
       return ingredient.name;
     });
@@ -23,11 +23,11 @@ class Recipe {
   getIngredientsCost(ingredientsData) {
     const ingredientsListIDs = this.ingredients.map((ingredient) => {
       return ingredient.id;
-    })
+    });
     const ingredientCost = ingredientsData.filter((ingredient) => {
-      return ingredientsListIDs.includes(ingredient.id)
+      return ingredientsListIDs.includes(ingredient.id);
     }).map((ingredient) => {
-      return ingredient.estimatedCostInCents
+      return ingredient.estimatedCostInCents;
     });
 
     let total = 0

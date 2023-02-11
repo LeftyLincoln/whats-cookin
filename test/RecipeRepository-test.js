@@ -23,7 +23,7 @@ describe('Recipe', () => {
   });
 
   it('should have a method that filter by name', () => {
-    expect(recipeRepo.filterName("Loaded Chocolate Chip Pudding Cookie Cups")).to.deep.equal([recipeData[0]]);
-    expect(recipeRepo.filterName('Loaded Chocolate')).to.deep.equal([recipeData[0]]);
+    expect(recipeRepo.filterName("Loaded Chocolate Chip Pudding Cookie Cups".toLowerCase())).to.deep.equal([recipeData[0]]);
+    expect(recipeRepo.filterName('Loaded Chocolate'.toLowerCase())).to.deep.equal([recipeData[0]]);
   });
 });
