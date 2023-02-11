@@ -15,7 +15,7 @@ const searchRecipeInput = document.querySelector(".search-recipe");
 const searchBtn = document.querySelector(".search-btn");
 const modalTitle = document.querySelector(".modal-title");
 const modalContent = document.querySelector(".modal-content");
-const favoriteHeading = document.querySelector(".favorites-heading");
+const favoriteHeading = document.querySelector(".favorites-section-button");
 const homeBtn = document.querySelector(".home-button");
 
 // Global Variables
@@ -78,7 +78,7 @@ function displayRecipes(recipeArray) {
                 src="${recipe.image}"
               />
               <p class="recipe-name">${recipe.name}</p>
-              <button class="favorite-button">Favorite</button>
+              <button class="favorite-button">♥️</button>
             </div>
     `;
   });
