@@ -2,7 +2,7 @@ import { expect } from "chai";
 import RecipeRepository from "../src/classes/RecipeRepository";
 import testRecipeData from "../src/data/testRecipes";
 import Recipe from "../src/classes/Recipe";
-import ingredientsData from "../src/data/ingredients";
+import ingredientsData from "../src/data/testIngredients";
 import User from "../src/classes/User";
 import testUserData from "../src/data/testUsers";
 
@@ -43,13 +43,13 @@ describe('User', () => {
     user.recipesToCook(testRecipeData[0]);
     user.recipesToCook(testRecipeData[1]);
     user.recipesToCook(testRecipeData[2]);
-    expect(user.filterTag('lunch')).to.deep.equal([testRecipeData[1]]);
+    expect(user.filterFavTag('lunch')).to.deep.equal([testRecipeData[1]]);
   });
 
   it('should filter recipes by name', () => {
     user.recipesToCook(testRecipeData[0]);
     user.recipesToCook(testRecipeData[1]);
     user.recipesToCook(testRecipeData[2]);
-    expect(user.filterName('Loaded Chocolate Chip Pudding Cookie Cups')).to.deep.equal([testRecipeData[0]]);
+    expect(user.filterFavName('Loaded Chocolate Chip Pudding Cookie Cups'.toLowerCase())).to.deep.equal([testRecipeData[0]]);
   });
 });
