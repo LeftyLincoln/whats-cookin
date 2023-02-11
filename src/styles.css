@@ -2,15 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: "Creepster", cursive; */
+  font-family: "Comfortaa";
 }
 
 .main-page {
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  background-color: antiquewhite;
 }
 
-/* .filter-section {
+.filter-section {
   border: 2px solid red;
 }
 
@@ -19,11 +23,19 @@
   text-align: center;
 }
 
-.favorites-section {
-  border: 2px solid black;
-  text-align: center;
-} */
+.favorite-button {
+  background-color: black;
+  font-size: large;
+  color: antiquewhite;
+  border-radius: 20px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
 
+.favorite-button:hover {
+  color: red;
+}
 /* Filter Section */
 .filter-section {
   padding: 20px 30px;
@@ -57,6 +69,7 @@
 .recipe-card img {
   width: 270px;
   height: auto;
+  border-radius: 25px;
 }
 
 .recipe-name {
@@ -102,18 +115,19 @@
   box-sizing: border-box;
 }
 
-.favorites-heading {
-  font-size: 2rem;
-  color: greenyellow;
-  background: gray;
-  border-radius: 10px;
-  padding: 10px 25px;
-  cursor: pointer;
+.favorites-section-button {
+  background-color: black;
+  font-size: x-large;
+  color: antiquewhite;
+  border-radius: 20px;
+  height: 100px;
+  width: 200px;
 }
-.favorites-heading:hover {
+
+/* .favorites-section-button:hover {
   background-color: aqua;
   scale: 1.2;
-}
+} */
 
 .home-button {
   padding: 10px;

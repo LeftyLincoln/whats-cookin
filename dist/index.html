@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito+Sans:wght@300;600;800&family=Open+Sans:wght@300;700&family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-
     <title>Whats Cookin</title>
   </head>
   <body>
@@ -22,10 +23,6 @@
           <button class="search-btn">Search</button>
         </form>
         <div class="filter-tags">
-          <p class="breakfast">Breakfast</p>
-          <p class="lunch">Lunch</p>
-          <p class="dinner">Dinner</p>
-          <p class="desserts">Desserts</p>
         </div>
       </section>
       <section class="recipe-section" data-micromodal-trigger="modal-1">
@@ -33,20 +30,21 @@
         <div class="recipe-container"></div>
       </section>
       <section class="favorites-section">
-        <h2 class="favorites-heading">Favorites</h2>
+        <button class="favorites-section-button">Favorites ❤️</button>
       </section>
       <div class="modal" id="modal-1" aria-hidden="true">
         <div class="modal-overlay" tabindex="-1" data-micromodal-close>
-          <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+          <div
+            class="modal-container"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-1-title"
+          >
             <header>
-              <h2 class="modal-title">
-                Modal Title
-              </h2>
+              <h2 class="modal-title">Modal Title</h2>
               <button aria-label="Close modal" data-micromodal-close>X</button>
             </header>
-            <div class="modal-content">
-              Modal Content
-            </div>
+            <div class="modal-content">Modal Content</div>
             <button class="favorite-button">Favorite</button>
           </div>
         </div>
