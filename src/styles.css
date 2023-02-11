@@ -5,50 +5,59 @@
   font-family: "Comfortaa";
 }
 
+/* Span bolder */
+.bolder {
+  font-weight: bolder;
+}
+
 .main-page {
   height: 100%;
   min-height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 18% 67% 15%;
   background-color: antiquewhite;
 }
 
-.filter-section {
-  border: 2px solid red;
-}
-
-.recipe-section {
-  border: 2px solid blue;
-  text-align: center;
-}
-
-.favorite-button {
-  background-color: black;
-  font-size: large;
-  color: antiquewhite;
-  border-radius: 20px;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-}
-
-.favorite-button:hover {
-  color: red;
-}
 /* Filter Section */
 .filter-section {
-  padding: 20px 30px;
+  background-color: rgb(45, 45, 45);
+  color: #fff;
 }
 
-.filter-tags {
-  line-height: 1.8;
-  padding: 20px 0;
+.filter-heading {
+  color: #fff;
+  text-align: center;
+  padding: 30px;
+  background-color: rgb(32, 30, 30);
+}
+
+.filter-form {
+  padding: 20px;
+}
+
+#tagNameFilter {
+  cursor: pointer;
+  padding: 13px 0 13px 20px;
+}
+
+#tagNameFilter:hover {
+  color: orange;
+  background-color: rgb(32, 30, 30);
+  border-left: 3px orange solid;
+}
+
+.home-button {
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 /* Recipe Section */
 .recipe-section {
   text-align: center;
+  margin-left: 30px;
 }
 
 .main-heading {
@@ -56,8 +65,34 @@
   font-size: 4rem;
 }
 
+.search-recipe {
+  padding: 15px;
+  border-radius: 7px;
+  border: none;
+  width: 300px;
+  margin-top: 5vh;
+}
+
+.search-recipe:focus {
+  outline: 2px solid orange;
+}
+
+.search-btn {
+  padding: 15px;
+  border: none;
+  border-radius: 7px;
+  background-color: orange;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-btn:hover {
+  background-color: rgb(255, 107, 53);
+}
+
 .recipe-container {
-  margin-top: 8vh;
+  margin-top: 2vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
@@ -66,15 +101,49 @@
   padding: 20px;
 }
 
+.recipe-card {
+  background-color: #fff;
+  border-radius: 28px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  /* Makes all cards same height */
+  /* height: 250px; */
+}
+
+.recipe-card:hover {
+  scale: 1.06;
+}
+
 .recipe-card img {
-  width: 270px;
+  width: 100%;
   height: auto;
-  border-radius: 25px;
+  border-radius: 25px 28px 0 0;
 }
 
 .recipe-name {
-  margin-top: 10px;
-  /* font-size: 20px; */
+  margin: 10px 0;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.favorite-button {
+  background-color: orange;
+  color: white;
+  font-size: 24px;
+  padding: 4px 8px;
+  border-radius: 360%;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.favorite-button:hover {
+  scale: 1.2;
 }
 
 /* Favorites Section */
@@ -83,8 +152,18 @@
   margin-top: 20px;
 }
 
-/* Modals */
+/* Favorites btn (right) */
+.favorites-section-button {
+  background-color: black;
+  font-size: 24px;
+  color: white;
+  border-radius: 20px;
+  padding: 15px 25px;
+  border: none;
+  cursor: pointer;
+}
 
+/* Modals */
 .modal {
   display: none;
 }
@@ -108,31 +187,78 @@
 .modal-container {
   background-color: #fff;
   padding: 30px;
-  max-width: 500px;
+  max-width: 600px;
   max-height: 100vh;
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
+  position: relative;
 }
 
-.favorites-section-button {
-  background-color: black;
-  font-size: x-large;
-  color: antiquewhite;
+.modal-close {
+  color: white;
+  background: black;
+  padding: 10px 13px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+}
+
+.modal-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-weight: bolder;
+}
+
+.modal-img {
+  width: 100%;
+  height: auto;
   border-radius: 20px;
-  height: 100px;
-  width: 200px;
+  margin-bottom: 20px;
 }
 
-/* .favorites-section-button:hover {
-  background-color: aqua;
-  scale: 1.2;
+/* Not working need to uncomment in html and add to scripts.js */
+/* .ingredient-list {
+  color: red;
 } */
 
-.home-button {
-  padding: 10px;
+.modal-instructions {
+  font-weight: bolder;
+  margin: 20px 0;
+  line-height: 1.4;
 }
 
-.home-button:hover {
-  scale: 1.2;
+.cost-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-cost {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.modal-favorite-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: orange;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-favorite-button:hover {
+  background: rgb(212, 144, 18);
+}
+
+.hidden {
+  display: none;
 }
