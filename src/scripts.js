@@ -65,6 +65,7 @@ function resolvePromises() {
       recipeRepo = new RecipeRepository(allRecipes);
       displayRecipes(recipeRepo.recipes);
       setUser(allUsers);
+      renderTags()
     });
 }
 
@@ -155,3 +156,14 @@ function showFavorites() {
 function goHome() {
   displayRecipes(recipeRepo.recipes);
 }
+
+function renderTags() {
+  let filterList = recipeRepo.recipes.flatMap(recipe => {
+    return recipe.tags;
+  });
+  let uniqueList = [... new Set(filterList)];
+  filterTags.innerHTML = '';
+  uniqueList.sort().forEach((tag) => {
+    filterTags.innerHTML += `<p class="${tag}">${tag.toUpperCase()}</p>`;
+  });
+};
