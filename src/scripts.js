@@ -78,7 +78,7 @@ function displayRecipes(recipeArray) {
                 src="${recipe.image}"
               />
               <p class="recipe-name">${recipe.name}</p>
-              <button class="favorite-button">favorite</button>
+              <button class="favorite-button">Favorite</button>
             </div>
     `;
   });
@@ -154,6 +154,7 @@ function showFavorites() {
 }
 
 function goHome() {
+  recipeContainer.classList.remove("favorites");
   displayRecipes(recipeRepo.recipes);
 }
 
