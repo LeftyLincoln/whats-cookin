@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>Whats Cookin</title>
@@ -15,22 +15,25 @@
   <body>
     <main class="main-page">
       <section class="filter-section">
-        <button class="home-button">Home</button>
         <h2 class="filter-heading">Filters</h2>
-        <form>
-          <label for="search-recipe">Search Recipe:</label>
-          <input class="search-recipe" type="text" />
-          <button class="search-btn">Search</button>
-        </form>
-        <div class="filter-tags">
-        </div>
+        <div class="filter-tags"></div>
+        <button class="home-button hidden">Home</button>
       </section>
       <section class="recipe-section" data-micromodal-trigger="modal-1">
         <h1 class="main-heading">What's Cookin'</h1>
+        <form class="filter-form">
+          <!-- <label for="search-recipe">Search Recipe:</label> -->
+          <input
+            class="search-recipe"
+            type="text"
+            placeholder="Search Recipe..."
+          />
+          <button class="search-btn">Search</button>
+        </form>
         <div class="recipe-container"></div>
       </section>
       <section class="favorites-section">
-        <button class="favorites-section-button">Favorites ❤️</button>
+        <button class="favorites-section-button">Favorites ♥️</button>
       </section>
       <div class="modal" id="modal-1" aria-hidden="true">
         <div class="modal-overlay" tabindex="-1" data-micromodal-close>
@@ -41,11 +44,18 @@
             aria-labelledby="modal-1-title"
           >
             <header>
+              <button
+                class="modal-close"
+                aria-label="Close modal"
+                data-micromodal-close
+              >
+                X
+              </button>
               <h2 class="modal-title">Modal Title</h2>
-              <button aria-label="Close modal" data-micromodal-close>X</button>
             </header>
-            <div class="modal-content">Modal Content</div>
-            <button class="favorite-button">Favorite</button>
+            <div class="modal-content">
+              <!-- <ul class="ingredient-list"></ul> -->
+            </div>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ function resolvePromises() {
       recipeRepo = new RecipeRepository(allRecipes);
       displayRecipes(recipeRepo.recipes);
       setUser(allUsers);
-      renderTags()
+      renderTags();
     });
 }
 
@@ -78,7 +78,7 @@ function displayRecipes(recipeArray) {
                 src="${recipe.image}"
               />
               <p class="recipe-name">${recipe.name}</p>
-              <button class="favorite-button">♥️</button>
+              <button class="favorite-button">♥</button>
             </div>
     `;
   });
@@ -90,12 +90,31 @@ function showFull(e) {
   let targetedRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
+
+  console.log(targetedRecipe.getInstructions());
   modalTitle.innerText = `${targetedRecipe.name}`;
   modalContent.innerHTML = `
-  <img src="${targetedRecipe.image}"
-  <p>${targetedRecipe.getIngredients(allIngredients)}</p>
-  <p>$${targetedRecipe.getIngredientsCost(allIngredients)}</p>
-  <p>${targetedRecipe.getInstructions()}</p>`;
+  <img class="modal-img" src="${targetedRecipe.image}"
+  <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredients(allIngredients)}</p>
+  <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
+  <div class="cost-container">
+    <p class="modal-cost">$${targetedRecipe.getIngredientsCost(
+      allIngredients
+    )}</p>
+    <button class="modal-favorite-button">Add To Favorites</button>
+  </div>
+  `;
+}
+
+{
+  /* <ul class="ingredient-list">
+    <li>${targetedRecipe.getIngredients(allIngredients)[0]}</li>
+    <li>${targetedRecipe.getIngredients(allIngredients)[1]}</li>
+    <li>${targetedRecipe.getIngredients(allIngredients)[2]}</li>
+    <li>${targetedRecipe.getIngredients(allIngredients)[3]}</li>
+    <li>${targetedRecipe.getIngredients(allIngredients)[4]}</li>
+    <li>${targetedRecipe.getIngredients(allIngredients)[5]}</li>
+  </ul> */
 }
 
 function filterByTag(e) {
@@ -159,12 +178,12 @@ function goHome() {
 }
 
 function renderTags() {
-  let filterList = recipeRepo.recipes.flatMap(recipe => {
+  let filterList = recipeRepo.recipes.flatMap((recipe) => {
     return recipe.tags;
   });
-  let uniqueList = [... new Set(filterList)];
-  filterTags.innerHTML = '';
+  let uniqueList = [...new Set(filterList)];
+  filterTags.innerHTML = "";
   uniqueList.sort().forEach((tag) => {
-    filterTags.innerHTML += `<p class="${tag}">${tag.toUpperCase()}</p>`;
+    filterTags.innerHTML += `<p class="${tag}" id="tagNameFilter">${tag.toUpperCase()}</p>`;
   });
-};
+}
