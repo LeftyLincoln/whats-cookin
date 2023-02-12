@@ -101,7 +101,6 @@ function showFull(e) {
     <p class="modal-cost">$${targetedRecipe.getIngredientsCost(
       allIngredients
     )}</p>
-    <button class="modal-favorite-button">Add To Favorites</button>
   </div>
   `;
 }
