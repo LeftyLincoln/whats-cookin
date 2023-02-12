@@ -46,13 +46,13 @@
   background-color: rgb(32, 30, 30);
   border-left: 3px orange solid;
 }
-
+/* 
 .home-button {
   border: none;
   padding: 10px 20px;
   text-align: center;
   border-radius: 10px;
-}
+} */
 
 /* Recipe Section */
 .recipe-section {
@@ -77,7 +77,7 @@
   outline: 2px solid orange;
 }
 
-.search-btn {
+.search-btn, .home-button{
   padding: 15px;
   border: none;
   border-radius: 7px;
@@ -87,7 +87,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.search-btn:hover {
+.search-btn:hover, .home-button:hover {
   background-color: rgb(255, 107, 53);
 }
 
@@ -140,6 +140,11 @@
   top: 10px;
   right: 15px;
   transition: all 0.3s ease-in-out;
+}
+
+.favorite-button-clicked {
+  color: red;
+  scale: 1;
 }
 
 .favorite-button:hover {

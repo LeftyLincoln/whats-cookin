@@ -78,7 +78,7 @@ function displayRecipes(recipeArray) {
                 src="${recipe.image}"
               />
               <p class="recipe-name">${recipe.name}</p>
-              <button class="favorite-button">♥</button>
+              <button class="favorite-button" id="favorite${recipe.id}">♥</button>
             </div>
     `;
   });
@@ -90,12 +90,12 @@ function showFull(e) {
   let targetedRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
-
-  console.log(targetedRecipe.getInstructions());
   modalTitle.innerText = `${targetedRecipe.name}`;
   modalContent.innerHTML = `
   <img class="modal-img" src="${targetedRecipe.image}"
-  <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredients(allIngredients)}</p>
+  <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredients(
+    allIngredients
+  )}</p>
   <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
   <div class="cost-container">
     <p class="modal-cost">$${targetedRecipe.getIngredientsCost(
@@ -106,27 +106,16 @@ function showFull(e) {
   `;
 }
 
-{
-  /* <ul class="ingredient-list">
-    <li>${targetedRecipe.getIngredients(allIngredients)[0]}</li>
-    <li>${targetedRecipe.getIngredients(allIngredients)[1]}</li>
-    <li>${targetedRecipe.getIngredients(allIngredients)[2]}</li>
-    <li>${targetedRecipe.getIngredients(allIngredients)[3]}</li>
-    <li>${targetedRecipe.getIngredients(allIngredients)[4]}</li>
-    <li>${targetedRecipe.getIngredients(allIngredients)[5]}</li>
-  </ul> */
-}
-
 function filterByTag(e) {
   let target = e.target.className;
   recipeContainer.innerHTML = "";
   let filteredRecipes;
-  console.log(recipeContainer.classList.contains("favorites"));
   if (recipeContainer.classList.contains("favorites")) {
     filteredRecipes = randomUser.filterFavTag(target);
   } else {
     filteredRecipes = recipeRepo.filterTag(target);
   }
+  homeBtn.classList.remove("hidden");
   displayRecipes(filteredRecipes);
 }
 
@@ -139,6 +128,7 @@ function filterByName() {
   } else {
     filteredRecipes = recipeRepo.filterName(input);
   }
+  homeBtn.classList.remove("hidden");
   displayRecipes(filteredRecipes);
 }
 
@@ -152,7 +142,8 @@ function saveRecipe(e) {
   let locateRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
-
+  let favoriteButton = document.getElementById(`favorite${target}`)
+  favoriteButton.classList.add("favorite-button-clicked")
   randomUser.recipesToCook(locateRecipe);
 }
 
@@ -169,11 +160,13 @@ function selectRecipe(e) {
 
 function showFavorites() {
   recipeContainer.classList.add("favorites");
+  homeBtn.classList.remove("hidden");
   displayRecipes(randomUser.favorites);
 }
 
 function goHome() {
   recipeContainer.classList.remove("favorites");
+  homeBtn.classList.add("hidden");
   displayRecipes(recipeRepo.recipes);
 }
 
