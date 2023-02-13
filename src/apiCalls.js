@@ -1,19 +1,3 @@
-// Your fetch requests will live here!
-// fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/users')
-//   .then((response) => response.json())
-//   .then((data) => console.log(data))
-//   .catch((error) => console.log(error))
-
-// fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/ingredients')
-//   .then((response) => response.json())
-//   .then((data) => console.log(data))
-//   .catch((error) => console.log(error))
-
-// fetch('https://what-s-cookin-starter-kit.herokuapp.com/api/v1/recipes')
-//   .then((response) => response.json())
-//   .then((data) => console.log(data))
-//   .catch((error) => console.log(error))
-
 function fetchRequest(type) {
   return fetch(`https://what-s-cookin-starter-kit.herokuapp.com/api/v1/${type}`)
   .then((response) => response.json())

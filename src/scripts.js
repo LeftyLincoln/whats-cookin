@@ -1,5 +1,4 @@
 import "./styles.css";
-import apiCalls from "./apiCalls";
 import "./images/turing-logo.png";
 import RecipeRepository from "../src/classes/RecipeRepository";
 import Recipe from "../src/classes/Recipe";
@@ -141,8 +140,8 @@ function saveRecipe(e) {
   let locateRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
-  let favoriteButton = document.getElementById(`favorite${target}`)
-  favoriteButton.classList.add("favorite-button-clicked")
+  let favoriteButton = document.getElementById(`favorite${target}`);
+  favoriteButton.classList.add("favorite-button-clicked");
   randomUser.recipesToCook(locateRecipe);
 }
 

@@ -46,13 +46,6 @@
   background-color: rgb(32, 30, 30);
   border-left: 3px orange solid;
 }
-/* 
-.home-button {
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 10px;
-} */
 
 /* Recipe Section */
 .recipe-section {
@@ -77,7 +70,7 @@
   outline: 2px solid orange;
 }
 
-.search-btn, .home-button{
+.search-btn, .home-button {
   padding: 15px;
   border: none;
   border-radius: 7px;
@@ -107,9 +100,6 @@
   position: relative;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-
-  /* Makes all cards same height */
-  /* height: 250px; */
 }
 
 .recipe-card:hover {
@@ -226,11 +216,6 @@
   border-radius: 20px;
   margin-bottom: 20px;
 }
-
-/* Not working need to uncomment in html and add to scripts.js */
-/* .ingredient-list {
-  color: red;
-} */
 
 .modal-instructions {
   font-weight: bolder;
