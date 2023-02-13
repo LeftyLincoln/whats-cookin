@@ -1,16 +1,41 @@
-# What's Cookin'? Starter Kit
+# Abstract
+- What's Cookin'?! This app was made to improve the lives of home chefs and other culinary enthusiasts.... everywhere! Users can browse, filter and save their favorite recipes. Bone Apple Tea! 
 
-The details of this project are outlined in the <a href="https://frontend.turing.edu/projects/What%27sCookin-PartOne.html" target="\__blank">project spec</a>.
+# Technologies
+- JavaScript
+- CSS
+- HTML
+- MicroModal
+- Node JS
 
-## Set Up
+# App Preview
+![What's Cookin' Preview](https://media.giphy.com/media/dadzbN7rrRoCheKjQ2/giphy.gif)
 
-1. Within your group, decide on one person to have the project repository on their Github account. This person will *fork* this repository - on the top right corner of the page, click the fork button.
-2. All group members should then clone down the forked repository (make sure that everyone is added as a collaborator as well). Since you don't want your project to be named "whats-cookin-starter-kit", add an optional argument after the repo url when cloning. The command should look like this: `git clone [remote-address] [what you want to name the repo]`.
-3. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` or `npm i` to install project dependencies.
-4. Run npm start in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page). `Control + C` is the command to stop running the local server. Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.
-5. Make sure both members of your team are collaborators on the forked repo.
-6. Do not run `npm audit fix --force`. This will update to the latest version of packages. We need to be using `webpack-dev-server@3.11.2` which is not the latest version. If you start to run into Webpack errors, first check that all group members are using the correct version.
+# Challenges
+- Utilizing fetch API
+- Retrieving and filtering through all the data to display the desired information
+- Implementing and styling the MicroModal library for modal display
 
-## Testing
+# Contributors 
+- [Jesus Borjas](https://github.com/Jesusborjas006)
+- [Kass Daniello](https://github.com/Zertroz)
+- [Travis Parks](https://github.com/LeftyLincoln)
+- [Lauren Seward](https://github.com/LSeward0421)
 
-Mocha and chai are already set up, with a boilerplate test for you.
+# Future Iterations
+- Adding the ability for users to add their own recipes
+- Allowing users to create shopping lists based on the ingredients in their favorite recipes
+
+# Getting Started
+- Clone the repository
+- Copy code
+- Install dependencies
+  - `npm install`
+  - `npm start`
+- Hold down `cmd` and double click the `local host` link to run the server
+- The app should now be running on your local browser
+- Enjoy!
+
+# Project Spec
+The details of this project are outlined [here.](https://frontend.turing.edu/projects/whats-cookin-part-one.html) 
+
