@@ -1,5 +1,5 @@
 # Abstract
-- What's Cookin'?! This app was made to improve the lives of home chefs and other culinary enthusiasts.... everywhere! Users can browse, filter and save their favorite recipes. Bone Apple Tea! 
+- What's Cookin'?! This app was made to improve the lives of home chefs and other culinary enthusiasts.... everywhere! Users can browse, filter and save their favorite recipes. 
 
 # Technologies
 - JavaScript
