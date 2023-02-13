@@ -17,18 +17,17 @@
       <section class="filter-section">
         <h2 class="filter-heading">Filters</h2>
         <div class="filter-tags"></div>
-        <button class="home-button hidden">Home</button>
       </section>
       <section class="recipe-section" data-micromodal-trigger="modal-1">
         <h1 class="main-heading">What's Cookin'</h1>
         <form class="filter-form">
-          <!-- <label for="search-recipe">Search Recipe:</label> -->
           <input
-            class="search-recipe"
-            type="text"
-            placeholder="Search Recipe..."
+          class="search-recipe"
+          type="text"
+          placeholder="Search Recipe..."
           />
           <button class="search-btn">Search</button>
+          <button class="home-button hidden">Home</button>
         </form>
         <div class="recipe-container"></div>
       </section>
@@ -54,13 +53,11 @@
               <h2 class="modal-title">Modal Title</h2>
             </header>
             <div class="modal-content">
-              <!-- <ul class="ingredient-list"></ul> -->
             </div>
           </div>
         </div>
       </div>
     </main>
   </body>
-  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
 </html>
