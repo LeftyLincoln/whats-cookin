@@ -45,7 +45,7 @@ favoriteHeading.addEventListener("click", () => {
   showFavorites();
 });
 
-homeBtn.addEventListener("click", () => {
+homeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   goHome();
 });
@@ -93,14 +93,10 @@ function showFull(e) {
   modalTitle.innerText = `${targetedRecipe.name}`;
   modalContent.innerHTML = `
   <img class="modal-img" src="${targetedRecipe.image}"
-  <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredients(
-    allIngredients
-  )}</p>
+  <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients)}</p>
   <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
   <div class="cost-container">
-    <p class="modal-cost">$${targetedRecipe.getIngredientsCost(
-      allIngredients
-    )}</p>
+    <p class="modal-cost">$${targetedRecipe.getIngredientsCost(allIngredients)}</p>
   </div>
   `;
 }
