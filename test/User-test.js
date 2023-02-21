@@ -1,8 +1,5 @@
 import { expect } from "chai";
-import RecipeRepository from "../src/classes/RecipeRepository";
 import testRecipeData from "../src/data/testRecipes";
-import Recipe from "../src/classes/Recipe";
-import ingredientsData from "../src/data/testIngredients";
 import User from "../src/classes/User";
 import testUserData from "../src/data/testUsers";
 

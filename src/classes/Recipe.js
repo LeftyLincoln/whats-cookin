@@ -8,14 +8,19 @@ class Recipe {
     this.tags = recipe.tags;
   }
 
-  getIngredients(ingredientsData) {
+  getIngredientsList(ingredientsData) {
     const ingredientsListIDs = this.ingredients.map((ingredient) => {
       return ingredient.id;
     });
-    const ingredientNames = ingredientsData
+    const ingredientList = ingredientsData
       .filter((ingredient) => {
         return ingredientsListIDs.includes(ingredient.id);
       })
+    return ingredientList;
+  }
+
+  getIngredientsName(ingredientsData) {
+    const ingredientNames = this.getIngredientsList(ingredientsData)
       .map((ingredient) => {
         return ingredient.name;
       });
@@ -23,13 +28,7 @@ class Recipe {
   }
 
   getIngredientsCost(ingredientsData) {
-    const ingredientsListIDs = this.ingredients.map((ingredient) => {
-      return ingredient.id;
-    });
-    const ingredientCost = ingredientsData
-      .filter((ingredient) => {
-        return ingredientsListIDs.includes(ingredient.id);
-      })
+    const ingredientCost = this.getIngredientsList(ingredientsData)
       .map((ingredient) => {
         return ingredient.estimatedCostInCents;
       });
@@ -45,10 +44,9 @@ class Recipe {
 
   getInstructions() {
     let recipeInstructions = "";
-    const instructionsString = this.instructions.forEach((instruction) => {
+    this.instructions.forEach((instruction) => {
       recipeInstructions += ` Step ${instruction.number}: ${instruction.instruction}`;
     });
-
     return recipeInstructions;
   }
 }
