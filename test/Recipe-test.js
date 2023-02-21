@@ -45,7 +45,7 @@ describe("Recipe class", () => {
   });
 
   it("Should get a list of ingredients by name", () => {
-    expect(recipeClass.getIngredients(ingredientsData)).to.deep.equal([
+    expect(recipeClass.getIngredientsName(ingredientsData)).to.deep.equal([
       "wheat flour",
       "bicarbonate of soda",
       "eggs",
