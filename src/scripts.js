@@ -18,8 +18,6 @@ const favoriteHeading = document.querySelector(".favorites-section-button");
 const homeBtn = document.querySelector(".home-button");
 
 // Global Variables
-let allUsers;
-let allRecipes;
 let allIngredients;
 let recipeRepo;
 let randomUser;
@@ -55,6 +53,8 @@ homeBtn.addEventListener("click", () => {
 // Functions
 
 function resolvePromises() {
+  let allUsers;
+  let allRecipes;
   fetchPromises()
     .then((data) => {
       allUsers = data[0].usersData.map((user) => new User(user));

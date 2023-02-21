@@ -45,10 +45,9 @@ class Recipe {
 
   getInstructions() {
     let recipeInstructions = "";
-    const instructionsString = this.instructions.forEach((instruction) => {
+    this.instructions.forEach((instruction) => {
       recipeInstructions += ` Step ${instruction.number}: ${instruction.instruction}`;
     });
-
     return recipeInstructions;
   }
 }
