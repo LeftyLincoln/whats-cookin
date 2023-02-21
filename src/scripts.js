@@ -48,6 +48,7 @@ favoriteHeading.addEventListener("click", () => {
 });
 
 homeBtn.addEventListener("click", () => {
+  e.preventDefault();
   goHome();
 });
 
