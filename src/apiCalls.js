@@ -15,16 +15,16 @@ function postRequest(recipe) {
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log(error));
-}
+};
 
 function fetchPromises() {
-  const allUsers = fetchRequest('users')
-  const allIngredients = fetchRequest('ingredients')
-  const allRecipes = fetchRequest('recipes')
-  return Promise.all([allUsers, allIngredients, allRecipes])
-}
+  const allUsers = fetchRequest('users');
+  const allIngredients = fetchRequest('ingredients');
+  const allRecipes = fetchRequest('recipes');
+  return Promise.all([allUsers, allIngredients, allRecipes]);
+};
 
-export { fetchPromises, postRequest }
+export { fetchPromises, postRequest };
 
 
 
