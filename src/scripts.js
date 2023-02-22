@@ -57,9 +57,9 @@ function resolvePromises() {
   let allRecipes;
   fetchPromises()
     .then((data) => {
-      allUsers = data[0].usersData.map((user) => new User(user));
-      allIngredients = data[1].ingredientsData.map((ingredient) => ingredient);
-      allRecipes = data[2].recipeData.map((recipe) => new Recipe(recipe));
+      allUsers = data[0].map((user) => new User(user));
+      allIngredients = data[1].map((ingredient) => ingredient);
+      allRecipes = data[2].map((recipe) => new Recipe(recipe));
     })
     .then(() => {
       recipeRepo = new RecipeRepository(allRecipes);
@@ -128,8 +128,9 @@ function filterByName() {
 }
 
 function setUser(arr) {
-  let randomUserIndex = arr[Math.floor(Math.random() * arr.length)];
-  randomUser = new User(randomUserIndex);
+  // let randomUserIndex = arr[Math.floor(Math.random() * arr.length)];
+  randomUser = new User(arr[0]);
+  console.log(randomUser)
 }
 
 function saveRecipe(e) {
