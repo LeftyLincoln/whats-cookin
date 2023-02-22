@@ -3,8 +3,8 @@ import "./images/turing-logo.png";
 import RecipeRepository from "../src/classes/RecipeRepository";
 import Recipe from "../src/classes/Recipe";
 import User from "../src/classes/User";
-import fetchPromises from "./apiCalls";
 import MicroModal from "micromodal";
+import { fetchPromises, postRequest } from './apiCalls'
 
 // Query Selectors
 
@@ -130,7 +130,6 @@ function filterByName() {
 function setUser(arr) {
   // let randomUserIndex = arr[Math.floor(Math.random() * arr.length)];
   randomUser = new User(arr[0]);
-  console.log(randomUser)
 }
 
 function saveRecipe(e) {
@@ -141,6 +140,7 @@ function saveRecipe(e) {
   let favoriteButton = document.getElementById(`favorite${target}`);
   favoriteButton.classList.add("favorite-button-clicked");
   randomUser.recipesToCook(locateRecipe);
+  postRequest({userID: randomUser.id, recipeID: locateRecipe.id})
 }
 
 function selectRecipe(e) {
