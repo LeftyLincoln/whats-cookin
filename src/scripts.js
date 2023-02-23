@@ -67,7 +67,7 @@ function resolvePromises() {
       setUser(allUsers);
       renderTags();
       randomUser.favoriteRecipe(allRecipes)
-      console.log(randomUser.favorites)
+      console.log('inside resolve promises:',randomUser)
     });
 }
 
@@ -142,12 +142,13 @@ function saveRecipe(e) {
   let favoriteButton = document.getElementById(`favorite${target}`);
   favoriteButton.classList.add("favorite-button-clicked");
   postRequest({userID: randomUser.id, recipeID: locateRecipe.id})
-  console.log(randomUser.favorites)
 }
 
 function selectRecipe(e) {
   if (e.target.className === "favorite-button") {
     saveRecipe(e);
+    resolvePromises()
+    console.log('after saving recipe:',randomUser)
   } else if (
     e.target.className === "recipe-img" ||
     e.target.className === "recipe-name"
