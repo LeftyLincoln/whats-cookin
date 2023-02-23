@@ -3,8 +3,8 @@ import "./images/turing-logo.png";
 import RecipeRepository from "../src/classes/RecipeRepository";
 import Recipe from "../src/classes/Recipe";
 import User from "../src/classes/User";
-import fetchPromises from "./apiCalls";
 import MicroModal from "micromodal";
+import { fetchPromises, postRequest } from './apiCalls'
 
 // Query Selectors
 
@@ -21,6 +21,7 @@ const homeBtn = document.querySelector(".home-button");
 let allIngredients;
 let recipeRepo;
 let randomUser;
+let allRecipes;
 
 // Event Listeners
 
@@ -54,18 +55,19 @@ homeBtn.addEventListener("click", (e) => {
 
 function resolvePromises() {
   let allUsers;
-  let allRecipes;
   fetchPromises()
     .then((data) => {
-      allUsers = data[0].usersData.map((user) => new User(user));
-      allIngredients = data[1].ingredientsData.map((ingredient) => ingredient);
-      allRecipes = data[2].recipeData.map((recipe) => new Recipe(recipe));
+      allUsers = data[0].map((user) => new User(user));
+      allIngredients = data[1].map((ingredient) => ingredient);
+      allRecipes = data[2].map((recipe) => new Recipe(recipe));
     })
     .then(() => {
       recipeRepo = new RecipeRepository(allRecipes);
       displayRecipes(recipeRepo.recipes);
       setUser(allUsers);
       renderTags();
+      randomUser.favoriteRecipe(allRecipes)
+      console.log(randomUser.favorites)
     });
 }
 
@@ -74,12 +76,12 @@ function displayRecipes(recipeArray) {
   recipeArray.forEach((recipe) => {
     recipeContainer.innerHTML += `
     <div id="${recipe.id}" class="recipe-card">
-              <img class="recipe-img"
-                src="${recipe.image}"
-              />
-              <p class="recipe-name">${recipe.name}</p>
-              <button class="favorite-button" id="favorite${recipe.id}">♥</button>
-            </div>
+      <img class="recipe-img"
+        src="${recipe.image}"
+      />
+      <p class="recipe-name">${recipe.name}</p>
+      <button class="favorite-button" id="favorite${recipe.id}">♥</button>
+    </div>
     `;
   });
 }
@@ -92,14 +94,14 @@ function showFull(e) {
   });
   modalTitle.innerText = `${targetedRecipe.name}`;
   modalContent.innerHTML = `
-  <img class="modal-img" src="${targetedRecipe.image}"
-  <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients)}</p>
-  <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
-  <div class="cost-container">
-    <p class="modal-cost">$${targetedRecipe.getIngredientsCost(allIngredients)}</p>
-  </div>
+    <img class="modal-img" src="${targetedRecipe.image}"
+    <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients)}</p>
+    <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
+    <div class="cost-container">
+      <p class="modal-cost">$${targetedRecipe.getIngredientsCost(allIngredients)}</p>
+    </div>
   `;
-}
+};
 
 function filterByTag(e) {
   let target = e.target.className;
@@ -128,8 +130,8 @@ function filterByName() {
 }
 
 function setUser(arr) {
-  let randomUserIndex = arr[Math.floor(Math.random() * arr.length)];
-  randomUser = new User(randomUserIndex);
+  // let randomUserIndex = arr[Math.floor(Math.random() * arr.length)];
+  randomUser = arr[0]
 }
 
 function saveRecipe(e) {
@@ -139,7 +141,8 @@ function saveRecipe(e) {
   });
   let favoriteButton = document.getElementById(`favorite${target}`);
   favoriteButton.classList.add("favorite-button-clicked");
-  randomUser.recipesToCook(locateRecipe);
+  postRequest({userID: randomUser.id, recipeID: locateRecipe.id})
+  console.log(randomUser.favorites)
 }
 
 function selectRecipe(e) {
@@ -156,6 +159,8 @@ function selectRecipe(e) {
 function showFavorites() {
   recipeContainer.classList.add("favorites");
   homeBtn.classList.remove("hidden");
+  randomUser.favoriteRecipe(allRecipes);
+  console.log(randomUser.favorites)
   displayRecipes(randomUser.favorites);
 }
 

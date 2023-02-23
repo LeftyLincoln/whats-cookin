@@ -2,14 +2,12 @@ class User {
   constructor(user) {
     this.name = user.name;
     this.id = user.id;
-    this.pantry = user.pantry;
-    this.favorites = [];
+    this.recipesToCook = user.recipesToCook;
+    this.favorites = []
   }
 
-  recipesToCook(recipe) {
-    if (!this.favorites.includes(recipe)) {
-      this.favorites.push(recipe);
-    }
+  favoriteRecipe(allRecipes) {
+    this.favorites = allRecipes.filter(recipe => this.recipesToCook.includes(recipe.id))
   }
 
   removeRecipes(recipe) {
