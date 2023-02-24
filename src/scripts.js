@@ -6,6 +6,7 @@ import User from "../src/classes/User";
 import MicroModal from "micromodal";
 import { fetchPromises, postRequest } from './apiCalls'
 
+
 // Query Selectors
 
 const recipeContainer = document.querySelector(".recipe-container");
@@ -53,7 +54,7 @@ homeBtn.addEventListener("click", (e) => {
 
 // Functions
 
-function resolvePromises() {
+export default function resolvePromises() {
   let allUsers;
   fetchPromises()
     .then((data) => {
@@ -67,7 +68,6 @@ function resolvePromises() {
       setUser(allUsers);
       renderTags();
       randomUser.favoriteRecipe(allRecipes)
-      console.log('inside resolve promises:',randomUser)
     });
 }
 
@@ -126,11 +126,14 @@ function filterByName() {
     filteredRecipes = recipeRepo.filterName(input);
   }
   homeBtn.classList.remove("hidden");
-  displayRecipes(filteredRecipes);
+  if (filteredRecipes.length === 0) {
+    recipeContainer.innerHTML = '<p> No recipe found </p>'
+  } else {
+    displayRecipes(filteredRecipes);
+  }  
 }
 
 function setUser(arr) {
-  // let randomUserIndex = arr[Math.floor(Math.random() * arr.length)];
   randomUser = arr[0]
 }
 
@@ -147,8 +150,6 @@ function saveRecipe(e) {
 function selectRecipe(e) {
   if (e.target.className === "favorite-button") {
     saveRecipe(e);
-    resolvePromises()
-    console.log('after saving recipe:',randomUser)
   } else if (
     e.target.className === "recipe-img" ||
     e.target.className === "recipe-name"
@@ -161,7 +162,6 @@ function showFavorites() {
   recipeContainer.classList.add("favorites");
   homeBtn.classList.remove("hidden");
   randomUser.favoriteRecipe(allRecipes);
-  console.log(randomUser.favorites)
   displayRecipes(randomUser.favorites);
 }
 
