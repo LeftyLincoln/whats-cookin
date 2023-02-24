@@ -1,3 +1,5 @@
+import resolvePromises from './scripts.js'
+
 function fetchRequest(type) {
   return fetch(`http://localhost:3001/api/v1/${type}`)
   .then((response) => response.json())
@@ -12,8 +14,7 @@ function postRequest(recipe) {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => response.json())
-  .then(data => console.log(data))
+  .then(resolvePromises())
   .catch(error => console.log(error));
 };
 

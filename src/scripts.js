@@ -6,6 +6,7 @@ import User from "../src/classes/User";
 import MicroModal from "micromodal";
 import { fetchPromises, postRequest } from './apiCalls'
 
+
 // Query Selectors
 
 const recipeContainer = document.querySelector(".recipe-container");
@@ -53,7 +54,7 @@ homeBtn.addEventListener("click", (e) => {
 
 // Functions
 
-function resolvePromises() {
+export default function resolvePromises() {
   let allUsers;
   fetchPromises()
     .then((data) => {
