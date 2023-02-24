@@ -17,6 +17,7 @@ const modalTitle = document.querySelector(".modal-title");
 const modalContent = document.querySelector(".modal-content");
 const favoriteHeading = document.querySelector(".favorites-section-button");
 const homeBtn = document.querySelector(".home-button");
+const groceryListBtn = document.querySelector(".grocery-list-button");
 
 // Global Variables
 let allIngredients;
@@ -51,6 +52,8 @@ homeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   goHome();
 });
+
+groceryListBtn.addEventListener("click", createGroceryList)
 
 // Functions
 
@@ -181,4 +184,14 @@ function renderTags() {
   uniqueList.sort().forEach((tag) => {
     filterTags.innerHTML += `<p class="${tag}" id="tagNameFilter">${tag.toUpperCase()}</p>`;
   });
+}
+
+function createGroceryList() {
+  MicroModal.show("modal-1");
+  modalContent.innerHTML = ''
+  modalTitle.innerText = 'Grocery List'
+  randomUser.favorites.forEach(recipe => {
+    modalContent.innerHTML += 
+    `<li><b>${recipe.name}:</b> ${recipe.getIngredientsName(allIngredients).join(', ')}</li><br>`
+  })
 }
