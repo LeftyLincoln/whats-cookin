@@ -78,6 +78,7 @@ function displayRecipes(recipeArray) {
     <div id="${recipe.id}" class="recipe-card">
       <img class="recipe-img"
         src="${recipe.image}"
+        alt="recipe image"
       />
       <p class="recipe-name">${recipe.name}</p>
       <button class="favorite-button" id="favorite${recipe.id}">♥</button>

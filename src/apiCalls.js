@@ -1,4 +1,4 @@
-import resolvePromises from './scripts.js'
+import resolvePromises from "./scripts";
 
 function fetchRequest(type) {
   return fetch(`http://localhost:3001/api/v1/${type}`)

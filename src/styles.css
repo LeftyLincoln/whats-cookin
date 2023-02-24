@@ -70,17 +70,21 @@
   outline: 2px solid orange;
 }
 
-.search-btn, .home-button {
-  padding: 15px;
+.search-btn,
+.home-button {
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 12px 15px;
   border: none;
   border-radius: 7px;
-  background-color: orange;
-  color: white;
+  background-color: rgb(255, 166, 0);
+  color: rgb(0, 0, 0);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
-.search-btn:hover, .home-button:hover {
+.search-btn:hover,
+.home-button:hover {
   background-color: rgb(255, 107, 53);
 }
 
