@@ -78,10 +78,10 @@ function displayRecipes(recipeArray) {
   recipeContainer.innerHTML = "";
   recipeArray.forEach((recipe) => {
     recipeContainer.innerHTML += `
-    <div id="${recipe.id}" class="recipe-card">
+    <div tabindex="0" id="${recipe.id}" class="recipe-card">
       <img class="recipe-img"
         src="${recipe.image}"
-        alt="recipe image"
+        alt="${recipe.name}"
       />
       <p class="recipe-name">${recipe.name}</p>
       <button class="favorite-button" id="favorite${recipe.id}">♥</button>
@@ -182,7 +182,7 @@ function renderTags() {
   let uniqueList = [...new Set(filterList)];
   filterTags.innerHTML = "";
   uniqueList.sort().forEach((tag) => {
-    filterTags.innerHTML += `<p class="${tag}" id="tagNameFilter">${tag.toUpperCase()}</p>`;
+    filterTags.innerHTML += `<button class="${tag}" id="tagNameFilter">${tag.toUpperCase()}</button>`;
   });
 }
 
