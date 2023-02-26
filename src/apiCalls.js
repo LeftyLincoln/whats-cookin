@@ -3,6 +3,7 @@ import resolvePromises from "./scripts";
 function fetchRequest(type) {
   return fetch(`http://localhost:3001/api/v1/${type}`)
   .then((response) => response.json())
+  .then(data => data[type])
   .catch((error) => console.log(error))
 }
 
