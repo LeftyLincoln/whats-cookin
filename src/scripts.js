@@ -20,6 +20,7 @@ const homeBtn = document.querySelector(".home-button");
 const groceryListBtn = document.querySelector(".grocery-list-button");
 
 // Global Variables
+
 let allIngredients;
 let recipeRepo;
 let randomUser;
@@ -34,12 +35,6 @@ window.addEventListener("load", () => {
 recipeContainer.addEventListener("click", (e) => {
   selectRecipe(e);
 });
-
-// window.addEventListener("keydown", (e) => {
-//     if (e.keyCode === 13 && e.target.className === 'recipe-card') {
-//       showFull(e)
-//     }
-// });
 
 filterTags.addEventListener("click", (e) => {
   filterByTag(e);
@@ -63,7 +58,7 @@ groceryListBtn.addEventListener("click", createGroceryList)
 
 // Functions
 
-export default function resolvePromises() {
+function resolvePromises() {
   let allUsers;
   fetchPromises()
     .then((data) => {
@@ -85,14 +80,14 @@ function displayRecipes(recipeArray) {
   recipeArray.forEach((recipe) => {
     recipeContainer.innerHTML += `
     <div class="recipe-card">
-    <button class="recipe-button" tabindex="0" id="${recipe.id}">
-      <img class="recipe-img"
-        src="${recipe.image}"
-        alt="${recipe.name}"
-      />
-      <p class="recipe-name">${recipe.name}</p>
-      <button class="favorite-button" id="favorite${recipe.id}">♥</button>
-    </button>
+      <button class="recipe-button" tabindex="0" id="${recipe.id}">
+        <img class="recipe-img"
+          src="${recipe.image}"
+          alt="${recipe.name}"
+        />
+        <p class="recipe-name">${recipe.name}</p>
+        <button class="favorite-button" id="favorite${recipe.id}">♥</button>
+      </button>
     </div>
     `;
   });
@@ -112,8 +107,8 @@ function showFull(e) {
   modalTitle.innerText = `${targetedRecipe.name}`;
   modalContent.innerHTML = `
     <img class="modal-img" src="${targetedRecipe.image}"
-    <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients)}</p>
-    <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
+      <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients)}</p>
+      <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
     <div class="cost-container">
       <p class="modal-cost">$${targetedRecipe.getIngredientsCost(allIngredients)}</p>
     </div>
@@ -163,7 +158,6 @@ function saveRecipe(e) {
 }
 
 function selectRecipe(e) {
-  console.log(e.target)
   if (e.target.className === "favorite-button") {
     saveRecipe(e);
   } else if (
@@ -206,3 +200,5 @@ function createGroceryList() {
     `<li><b>${recipe.name}:</b> ${recipe.getIngredientsName(allIngredients).join(', ')}</li><br>`
   })
 }
+
+export default resolvePromises
