@@ -32,8 +32,7 @@ window.addEventListener("load", () => {
 });
 
 recipeContainer.addEventListener("click", (e) => {
-    selectRecipe(e);
-    console.log(e.target);
+  selectRecipe(e);
 });
 
 // window.addEventListener("keydown", (e) => {
@@ -106,7 +105,6 @@ function showFull(e) {
   } else {
     target = e.target.parentElement.id
   }
-  console.log(target)
   MicroModal.show("modal-1");
   let targetedRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
@@ -123,7 +121,7 @@ function showFull(e) {
 };
 
 function filterByTag(e) {
-  let target = e.target.className;
+  let target = e.target.id;
   recipeContainer.innerHTML = "";
   let filteredRecipes;
   if (recipeContainer.classList.contains("favorites")) {
@@ -157,22 +155,19 @@ function setUser(arr) {
 }
 
 function saveRecipe(e) {
-  let target = e.target.parentElement.id;
+  let target = e.target.id.slice(8);
   let locateRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
-  let favoriteButton = document.getElementById(`favorite${target}`);
-  favoriteButton.classList.add("favorite-button-clicked");
   postRequest({userID: randomUser.id, recipeID: locateRecipe.id})
 }
 
 function selectRecipe(e) {
+  console.log(e.target)
   if (e.target.className === "favorite-button") {
     saveRecipe(e);
   } else if (
-    e.target.className === "recipe-img" ||
-    e.target.className === "recipe-name"
-    || e.target.className === "recipe-button"
+    e.target.className === "recipe-img" || e.target.className === "recipe-name" || e.target.className === "recipe-button"
   ) {
     showFull(e);
   }
@@ -198,7 +193,7 @@ function renderTags() {
   let uniqueList = [...new Set(filterList)];
   filterTags.innerHTML = "";
   uniqueList.sort().forEach((tag) => {
-    filterTags.innerHTML += `<button class="${tag}" id="tagNameFilter">${tag.toUpperCase()}</button>`;
+    filterTags.innerHTML += `<button class="tagNameFilter" id="${tag}">${tag.toUpperCase()}</button>`;
   });
 }
 
