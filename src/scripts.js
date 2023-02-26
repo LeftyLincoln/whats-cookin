@@ -32,8 +32,15 @@ window.addEventListener("load", () => {
 });
 
 recipeContainer.addEventListener("click", (e) => {
-  selectRecipe(e);
+    selectRecipe(e);
+    console.log(e.target);
 });
+
+// window.addEventListener("keydown", (e) => {
+//     if (e.keyCode === 13 && e.target.className === 'recipe-card') {
+//       showFull(e)
+//     }
+// });
 
 filterTags.addEventListener("click", (e) => {
   filterByTag(e);
@@ -78,20 +85,28 @@ function displayRecipes(recipeArray) {
   recipeContainer.innerHTML = "";
   recipeArray.forEach((recipe) => {
     recipeContainer.innerHTML += `
-    <div tabindex="0" id="${recipe.id}" class="recipe-card">
+    <div class="recipe-card">
+    <button class="recipe-button" tabindex="0" id="${recipe.id}">
       <img class="recipe-img"
         src="${recipe.image}"
         alt="${recipe.name}"
       />
       <p class="recipe-name">${recipe.name}</p>
       <button class="favorite-button" id="favorite${recipe.id}">♥</button>
+    </button>
     </div>
     `;
   });
 }
 
 function showFull(e) {
-  let target = e.target.parentElement.id;
+  let target;
+  if (e.target.className === "recipe-button") {
+    target = e.target.id
+  } else {
+    target = e.target.parentElement.id
+  }
+  console.log(target)
   MicroModal.show("modal-1");
   let targetedRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
@@ -157,6 +172,7 @@ function selectRecipe(e) {
   } else if (
     e.target.className === "recipe-img" ||
     e.target.className === "recipe-name"
+    || e.target.className === "recipe-button"
   ) {
     showFull(e);
   }
