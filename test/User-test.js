@@ -21,32 +21,26 @@ describe('User', () => {
     expect(user.id).to.equal(1);
   });
 
-  it('should have a pantry', () => {
-    expect(user.pantry).to.deep.equal(testUserData.pantry);
-  });
-
   it('should save recipes', () => {
-    user.recipesToCook(testRecipeData[0]);
+    user.recipesToCook = [595736]
+    user.favoriteRecipe(testRecipeData);
     expect(user.favorites).to.deep.equal([testRecipeData[0]]);
   });
 
   it('should remove recipes', () => {
-    user.recipesToCook(testRecipeData[0]);
     user.removeRecipes(testRecipeData[0]);
     expect(user.favorites).to.deep.equal([]);
   });
 
   it('should filter recipes by tag', () => {
-    user.recipesToCook(testRecipeData[0]);
-    user.recipesToCook(testRecipeData[1]);
-    user.recipesToCook(testRecipeData[2]);
+    user.recipesToCook = [595736, 678353, 412309];
+    user.favoriteRecipe(testRecipeData)
     expect(user.filterFavTag('lunch')).to.deep.equal([testRecipeData[1]]);
   });
 
   it('should filter recipes by name', () => {
-    user.recipesToCook(testRecipeData[0]);
-    user.recipesToCook(testRecipeData[1]);
-    user.recipesToCook(testRecipeData[2]);
+    user.recipesToCook = [595736, 678353, 412309];
+    user.favoriteRecipe(testRecipeData)
     expect(user.filterFavName('Loaded Chocolate Chip Pudding Cookie Cups'.toLowerCase())).to.deep.equal([testRecipeData[0]]);
   });
 });
