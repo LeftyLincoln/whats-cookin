@@ -91,7 +91,7 @@ function displayRecipes(recipeArray) {
         alt="${recipe.name}"
       />
       <p class="recipe-name">${recipe.name}</p>
-      <button class="favorite-button" id="${recipe.id}">♥</button>
+      <button class="favorite-button" id="favorite${recipe.id}">♥</button>
     </button>
     </div>
     `;
@@ -121,7 +121,7 @@ function showFull(e) {
 };
 
 function filterByTag(e) {
-  let target = e.target.className;
+  let target = e.target.id;
   recipeContainer.innerHTML = "";
   let filteredRecipes;
   if (recipeContainer.classList.contains("favorites")) {
@@ -155,7 +155,7 @@ function setUser(arr) {
 }
 
 function saveRecipe(e) {
-  let target = e.target.id;
+  let target = e.target.id.slice(8);
   let locateRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
@@ -193,7 +193,7 @@ function renderTags() {
   let uniqueList = [...new Set(filterList)];
   filterTags.innerHTML = "";
   uniqueList.sort().forEach((tag) => {
-    filterTags.innerHTML += `<button class="${tag}" id="tagNameFilter">${tag.toUpperCase()}</button>`;
+    filterTags.innerHTML += `<button class="tagNameFilter" id="${tag}">${tag.toUpperCase()}</button>`;
   });
 }
 
