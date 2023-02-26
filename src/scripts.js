@@ -32,8 +32,7 @@ window.addEventListener("load", () => {
 });
 
 recipeContainer.addEventListener("click", (e) => {
-    selectRecipe(e);
-    console.log(e.target);
+  selectRecipe(e);
 });
 
 // window.addEventListener("keydown", (e) => {
@@ -92,7 +91,7 @@ function displayRecipes(recipeArray) {
         alt="${recipe.name}"
       />
       <p class="recipe-name">${recipe.name}</p>
-      <button class="favorite-button" id="favorite${recipe.id}">♥</button>
+      <button class="favorite-button" id="${recipe.id}">♥</button>
     </button>
     </div>
     `;
@@ -106,7 +105,6 @@ function showFull(e) {
   } else {
     target = e.target.parentElement.id
   }
-  console.log(target)
   MicroModal.show("modal-1");
   let targetedRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
@@ -157,22 +155,19 @@ function setUser(arr) {
 }
 
 function saveRecipe(e) {
-  let target = e.target.parentElement.id;
+  let target = e.target.id;
   let locateRecipe = recipeRepo.recipes.find((recipe) => {
     return recipe.id === Number(target);
   });
-  let favoriteButton = document.getElementById(`favorite${target}`);
-  favoriteButton.classList.add("favorite-button-clicked");
   postRequest({userID: randomUser.id, recipeID: locateRecipe.id})
 }
 
 function selectRecipe(e) {
+  console.log(e.target)
   if (e.target.className === "favorite-button") {
     saveRecipe(e);
   } else if (
-    e.target.className === "recipe-img" ||
-    e.target.className === "recipe-name"
-    || e.target.className === "recipe-button"
+    e.target.className === "recipe-img" || e.target.className === "recipe-name" || e.target.className === "recipe-button"
   ) {
     showFull(e);
   }
