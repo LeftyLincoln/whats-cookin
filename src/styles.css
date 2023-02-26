@@ -47,7 +47,7 @@
   color: white;
 }
 
-#tagNameFilter:hover {
+.tagNameFilter:hover {
   color: orange;
   background-color: rgb(32, 30, 30);
   border-left: 3px orange solid;
