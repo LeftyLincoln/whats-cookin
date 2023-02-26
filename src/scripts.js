@@ -195,9 +195,14 @@ function createGroceryList() {
   MicroModal.show("modal-1");
   modalContent.innerHTML = ''
   modalTitle.innerText = 'Grocery List'
+  let ingredients = []
   randomUser.favorites.forEach(recipe => {
-    modalContent.innerHTML += 
-    `<li><b>${recipe.name}:</b> ${recipe.getIngredientsName(allIngredients).join(', ')}</li><br>`
+    ingredients.push(recipe.getIngredientsName(allIngredients))
+  })
+  ingredients.flat().forEach(ingredient => {
+    modalContent.innerHTML += `
+      <li>${ingredient}</li>
+    `
   })
 }
 
