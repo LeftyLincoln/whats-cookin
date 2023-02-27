@@ -1,5 +1,5 @@
 # Abstract
-- What's Cookin'?! This app was made to improve the lives of home chefs and other culinary enthusiasts.... everywhere! Users can browse, filter and save their favorite recipes. 
+- What's Cookin'?! This app was made to improve the lives of home chefs and other culinary enthusiasts.... everywhere! Users can browse, filter and save their favorite recipes. Users can also create a grocery list of ingredients for their favorited recipes.  
 
 # Technologies
 - JavaScript
@@ -7,6 +7,9 @@
 - HTML
 - MicroModal
 - Node JS
+- Webpack
+- Fetch API
+- Mocha / Chai 
 
 # App Preview
 ![What's Cookin' Preview](https://media.giphy.com/media/dadzbN7rrRoCheKjQ2/giphy.gif)
@@ -27,9 +30,10 @@
 - Allowing users to create shopping lists based on the ingredients in their favorite recipes
 
 # Getting Started
-- Clone the repository
+- [Clone down the API repository](https://github.com/turingschool-examples/whats-cookin-api)
+- Clone down this repository to your local machine
 - Copy code
-- Install dependencies
+- Install dependencies on both repositories
   - `npm install`
   - `npm start`
 - Hold down `cmd` and double click the `local host` link to run the server
