@@ -157,6 +157,7 @@
   scale: 1.2;
 }
 
+
 /* Favorites Section */
 .favorites-section {
   text-align: center;
@@ -283,4 +284,9 @@
 
 .hidden {
   display: none;
+}
+
+.no-recipe-found {
+  position: relative;
+  left: 21vw;
 }

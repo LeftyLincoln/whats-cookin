@@ -43,6 +43,7 @@ filterTags.addEventListener("click", (e) => {
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   filterByName();
+  searchRecipeInput.value = ''
 });
 
 favoriteHeading.addEventListener("click", () => {
@@ -107,13 +108,14 @@ function showFull(e) {
   modalTitle.innerText = `${targetedRecipe.name}`;
   modalContent.innerHTML = `
     <img class="modal-img" src="${targetedRecipe.image}"
-      <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients)}</p>
+      <p class="modal-ingredients"><span class="bolder">Ingredients:</span> ${targetedRecipe.getIngredientsName(allIngredients).join(", ")}</p>
       <p class="modal-instructions">${targetedRecipe.getInstructions()}</p>
     <div class="cost-container">
       <p class="modal-cost">$${targetedRecipe.getIngredientsCost(allIngredients)}</p>
     </div>
   `;
 };
+
 
 function filterByTag(e) {
   let target = e.target.id;
@@ -139,7 +141,7 @@ function filterByName() {
   }
   homeBtn.classList.remove("hidden");
   if (filteredRecipes.length === 0) {
-    recipeContainer.innerHTML = '<p> No recipe found </p>'
+    recipeContainer.innerHTML = '<p class="no-recipe-found"> No recipe found </p>'
   } else {
     displayRecipes(filteredRecipes);
   }  
@@ -193,17 +195,22 @@ function renderTags() {
 
 function createGroceryList() {
   MicroModal.show("modal-1");
-  modalContent.innerHTML = ''
-  modalTitle.innerText = 'Grocery List'
-  let ingredients = []
+  modalContent.innerHTML = '';
+  modalTitle.innerText = 'Grocery List';
+  let ingredients = [];
   randomUser.favorites.forEach(recipe => {
-    ingredients.push(recipe.getIngredientsName(allIngredients))
-  })
-  ingredients.flat().forEach(ingredient => {
+    recipe.getIngredientsName(allIngredients).forEach(ingredient => {
+      ingredients.push(ingredient.toLowerCase());
+    });
+  });
+  let uniqueIngredients = [...new Set(ingredients)];
+  uniqueIngredients.sort().forEach(ingredient => {
     modalContent.innerHTML += `
-      <li>${ingredient}</li>
-    `
-  })
-}
+        <li>${ingredient}</li>
+      `;
+  });
+};
+
+
 
 export default resolvePromises
