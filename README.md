@@ -12,7 +12,7 @@
 - Mocha / Chai 
 
 # App Preview
-![What's Cookin' Preview](https://media.giphy.com/media/dadzbN7rrRoCheKjQ2/giphy.gif)
+![WhatsCookin](https://user-images.githubusercontent.com/114787710/221680816-24c45367-0d3f-4aa2-9263-ebf365726fb3.gif)
 
 # Challenges
 - Utilizing fetch API
