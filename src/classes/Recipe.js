@@ -23,7 +23,7 @@ class Recipe {
     const ingredientNames = this.getIngredientsList(ingredientsData)
       .map((ingredient) => {
         return ingredient.name;
-      });
+      })
     return ingredientNames;
   }
 
@@ -45,7 +45,7 @@ class Recipe {
   getInstructions() {
     let recipeInstructions = "";
     this.instructions.forEach((instruction) => {
-      recipeInstructions += ` Step ${instruction.number}: ${instruction.instruction}`;
+      recipeInstructions += `<br> Step ${instruction.number}: ${instruction.instruction}</br>`;
     });
     return recipeInstructions;
   }
