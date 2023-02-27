@@ -157,7 +157,6 @@
   scale: 1.2;
 }
 
-
 /* Favorites Section */
 .favorites-section {
   text-align: center;
@@ -175,6 +174,11 @@
   border: none;
   cursor: pointer;
   margin-bottom: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.favorites-section-button:hover, .grocery-list-button:hover {
+  scale:1.2;
 }
 
 .grocery-list-button {
@@ -186,10 +190,7 @@
   padding: 15px 25px;
   border: none;
   cursor: pointer;
-}
-
-.grocery-list-button:disabled {
-  background-color: red;
+  transition: all 0.3s ease-in-out;
 }
 /* Modals */
 .modal {
